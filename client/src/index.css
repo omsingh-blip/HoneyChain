@@ -1,0 +1,116 @@
+
+@import "tailwindcss";
+
+/* Shared design tokens and Tailwind utilities */
+@theme {
+  --color-honey: #F4B942;
+  --color-honey-bright: #FFCA4B;
+  --color-honey-deep: #C98719;
+  --color-honey-soft: #F8D875;
+  --color-forest: #6D8B45;
+
+  --font-sans: Inter, ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Dark theme: default */
+:root,
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --color-background: #0B0D0C;
+  --color-surface: #151713;
+  --color-elevated: #202119;
+  --color-border: #34352C;
+
+  --color-text: #F8F6EF;
+  --color-muted: #B9B8AD;
+
+  --color-primary: #F4B942;
+  --color-primary-hover: #FFCA4B;
+}
+
+/* Light theme */
+:root[data-theme="light"] {
+  color-scheme: light;
+
+  --color-background: #FFFDF7;
+  --color-surface: #FFFFFF;
+  --color-elevated: #F5F0E5;
+  --color-border: #E5DFD0;
+
+  --color-text: #242319;
+  --color-muted: #68675E;
+
+  --color-primary: #C98719;
+  --color-primary-hover: #A96E10;
+}
+
+/* Expose theme-dependent colors as Tailwind utilities */
+@theme inline {
+  --color-app-bg: var(--color-background);
+  --color-app-surface: var(--color-surface);
+  --color-app-elevated: var(--color-elevated);
+  --color-app-border: var(--color-border);
+
+  --color-app-text: var(--color-text);
+  --color-app-muted: var(--color-muted);
+
+  --color-app-primary: var(--color-primary);
+  --color-app-primary-hover: var(--color-primary-hover);
+}
+
+:root {
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 320px;
+  background: var(--color-background);
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  color: var(--color-text);
+  background: var(--color-background);
+  transition:
+    background-color 200ms ease,
+    color 200ms ease;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  background: var(--color-honey);
+  color: #0B0D0C;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
